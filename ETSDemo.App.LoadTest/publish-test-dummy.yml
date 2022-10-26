@@ -1,0 +1,18 @@
+trigger:
+  none
+
+pool:
+  vmImage: ubuntu-latest
+
+jobs:
+- job: Publish_test
+  steps:
+  - task: PublishTestResults@2
+    inputs:
+      testRunner: VSTest # JUnit
+      testResultsFiles: '**/test-003.trx'
+  - task: PublishPipelineArtifact@1
+    inputs:
+      targetPath: '$(Build.SourcesDirectory)/ETSDemo.App.LoadTest/test-003.trx'
+      artifactType: 'pipeline'
+      artifactName: 'drop'

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+
+  <!-- Parameters used by tests at runtime -->
+  <TestRunParameters>
+    <!--<Parameter name="webAppUrl" value="https://localhost:5001" />-->
+    <Parameter name="webAppUrl" value="https://ets-demo-test.azurewebsites.net/" />
+    <Parameter name="implicitWaitSeconds" value="30" />
+    <Parameter name="useSeleniumGrid" value="false" />
+    <Parameter name="seleniumGridUrl" value="http://20.193.17.113:4444/wd/hub" />
+  </TestRunParameters>
+
+</RunSettings>

@@ -1,0 +1,112 @@
+﻿@{
+    ViewData["Title"] = "Calculator";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Calculator</h1>
+    <p>Enter the expression you want to calculate.</p>
+    <div id="calc" class="calc">
+        <div id="expr">
+            <input type="text" id="txtExpr" readonly class="txt-expr" /> = <input type="text" id="txtResult" readonly class="txt-result" />
+            <span id="spinner" style="display: none"><img src="~/images/spinner.gif" width="30" /></span>
+        </div>
+        <div id="buttons" class="calc-buttons">
+            <div>
+                <button id="7" onclick="r('7')" class="calc-button">7</button>
+                <button id="8" onclick="r('8')" class="calc-button">8</button>
+                <button id="9" onclick="r('9')" class="calc-button">9</button>
+                <button id="div" onclick="r('/')" class="calc-button-op">/</button>
+            </div>
+            <div>
+                <button id="4" onclick="r('4')" class="calc-button">4</button>
+                <button id="5" onclick="r('5')" class="calc-button">5</button>
+                <button id="6" onclick="r('6')" class="calc-button">6</button>
+                <button id="mul" onclick="r('*')" class="calc-button-op">X</button>
+            </div>
+            <div>
+                <button id="1" onclick="r('1')" class="calc-button">1</button>
+                <button id="2" onclick="r('2')" class="calc-button">2</button>
+                <button id="3" onclick="r('3')" class="calc-button">3</button>
+                <button id="sub" onclick="r('-')" class="calc-button-op">-</button>
+            </div>
+            <div>
+                <button id="0" onclick="r('0')" class="calc-button">0</button>
+                <button id="dot" onclick="r('.')" class="calc-button">.</button>
+                <button id="ob" onclick="r('(')" class="calc-button-small">(</button>
+                <button id="cb" onclick="r(')')" class="calc-button-small">)</button>
+                <button id="add" onclick="r('+')" class="calc-button-op">+</button>
+            </div>
+        </div>
+        <div id="divResults" class="div-results">
+            <button id="clr" onclick="clearText()" class="calc-button-small">C</button>
+            <button id="rem" onclick="removeLastChar()" class="calc-button-small">&lt;-</button>
+            <button id="result" onclick="loadResult()" class="calc-button-result">=</button>
+        </div>
+        <div id="error" class="error">
+
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        function r(c) {
+            var expr = document.getElementById("txtExpr");
+            expr.value += c;
+        }
+
+        function clearText() {
+            var expr = document.getElementById("txtExpr");
+            expr.value = '';
+            let divError = document.getElementById("error");
+            divError.innerText = '';
+        }
+
+        function removeLastChar() {
+            let expr = document.getElementById("txtExpr");
+            if (expr.value.length >= 1) {
+                let value = expr.value.substring(0, expr.value.length - 1);
+                expr.value = value;
+            }
+        }
+
+        function loadResult() {
+            var xmlhttp = new XMLHttpRequest();
+
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
+                    toggleSpinner();
+                    if (xmlhttp.status == 200) {
+                        let txtResult = document.getElementById("txtResult");
+                        txtResult.value = xmlhttp.responseText;
+                        let divError = document.getElementById("error");
+                        divError.innerText = '';
+                    }
+                    else {
+                        let divError = document.getElementById("error");
+                        divError.innerText = `Unable to calculate expression. Error returned: ${xmlhttp.responseText} (${xmlhttp.status})`;
+                    }
+                }
+            };
+
+            toggleSpinner();
+            let expr = encodeURIComponent(document.getElementById("txtExpr").value);
+            xmlhttp.open("GET", `/Home/Calculate?expression=${expr}`, true);
+            xmlhttp.send();
+        }
+
+        function toggleSpinner() {
+            var spinner = document.getElementById("spinner");
+            if (spinner.style.display === 'none')
+                spinner.style.display = '';
+            else
+                spinner.style.display = 'none';
+        }
+
+        function isSpinnerHidden() {
+            var spinner = document.getElementById("spinner");
+            return (spinner.style.display === 'none');
+        }
+
+    </script>
+}

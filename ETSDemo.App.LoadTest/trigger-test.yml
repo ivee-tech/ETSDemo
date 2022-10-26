@@ -1,0 +1,53 @@
+trigger:
+  none
+
+parameters:
+- name: pollingSeconds
+  type: number
+  default: 60
+- name: maxPollingSeconds
+  type: number
+  default: 300
+- name: scaleFactor
+  type: number
+  default: 1
+- name: testResultsFormat
+  type: string
+  default: JUnit
+  values:
+  - JUnit
+  - VSTest
+pool:
+  vmImage: ubuntu-latest
+
+jobs:
+- job: Execute_load_test
+  variables:
+    - group: ETSDemo-load-test
+    - ${{ if eq(parameters.testResultsFormat, 'JUnit') }}:
+      - name: extension
+        value: 'xml'
+    - ${{ if eq(parameters.testResultsFormat, 'VSTest') }}:
+      - name: extension
+        value: 'trx'
+  steps:
+  - pwsh: |
+      $testId = '$(testId)'
+      $testToken = '$(testToken)'
+      $apiKey = '$(apiKey)'
+      $testName = '$(testName)'
+
+      & ./ETSDemo.App.LoadTest/trigger-test.ps1 -testName "$testName" -testId $testId -testToken $testToken -apiKey $apiKey -checkTestResults `
+        -scriptPath ETSDemo.App.LoadTest -pollingSeconds ${{ parameters.pollingSeconds }} -maxPollingSeconds ${{ parameters.maxPollingSeconds }} `
+        -scaleFactor ${{ parameters.scaleFactor }} -testResultsFormat ${{ parameters.testResultsFormat }}
+    displayName: 'Trigger load test execution'
+  - task: PublishTestResults@2
+    condition: succeededOrFailed()
+    inputs:
+      testRunner: JUnit
+      testResultsFiles: '**/$(testName)*.${{ variables.extension }}'
+  - task: PublishPipelineArtifact@1
+    inputs:
+      targetPath: '$(Build.SourcesDirectory)/tmp'
+      artifactType: 'pipeline'
+      artifactName: 'drop'

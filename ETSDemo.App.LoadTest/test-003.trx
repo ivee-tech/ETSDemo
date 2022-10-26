@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="bafe5869-d79d-40f5-a164-6dc7270fbc71" name="test-003" runUser="user001" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2019-10-30T12:55:37.9487949+11:00" queuing="2019-10-30T12:55:37.9487971+11:00" start="2019-10-30T12:55:19.9558170+11:00" finish="2019-10-30T12:55:37.9657804+11:00" />
+  <TestSettings name="default" id="9bf824e5-4753-462e-a7b2-47aabdfadee2">
+    <Deployment runDeploymentRoot="deploy-001" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="88b437dd-e27b-46bb-a460-62961259e4ea" testId="f3699295-fb4c-d756-4cb4-d0a32064e009" 
+        testName="test-003-001" computerName="XYZ" duration="00:00:17.1989508" startTime="2019-10-30T12:55:20.6062658+11:00" endTime="2019-10-30T12:55:37.8340780+11:00" 
+        testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+    </UnitTestResult>
+    <UnitTestResult executionId="88b437dd-e27b-46bb-a460-62961259e4ea" testId="f3699295-fb4c-d756-4cb4-d0a32064e00A" 
+        testName="test-003-002" computerName="XYZ" duration="00:00:17.1989508" startTime="2019-10-30T12:55:20.6062658+11:00" endTime="2019-10-30T12:55:37.8340780+11:00" 
+        testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="test-003-001" storage="" id="f3699295-fb4c-d756-4cb4-d0a32064e009">
+      <Execution id="88b437dd-e27b-46bb-a460-62961259e4ea" />
+      <TestMethod codeBase="" adapterTypeName="executor://mstestadapter/v2" className="" name="test-003-001" />
+    </UnitTest>
+    <UnitTest name="test-003-001" storage="" id="f3699295-fb4c-d756-4cb4-d0a32064e00A">
+      <Execution id="88b437dd-e27b-46bb-a460-62961259e4ea" />
+      <TestMethod codeBase="" adapterTypeName="executor://mstestadapter/v2" className="" name="test-003-002" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="f3699295-fb4c-d756-4cb4-d0a32064e009" executionId="88b437dd-e27b-46bb-a460-62961259e4ea" 
+        testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f3699295-fb4c-d756-4cb4-d0a32064e00A" executionId="88b437dd-e27b-46bb-a460-62961259e4ea" 
+        testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="All Results" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="2" executed="2" passed="1" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+</TestRun>

@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30223.230
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ETSDemo.App", "ETSDemo.App\ETSDemo.App.csproj", "{19FD0A66-E77A-4B3E-9C34-EE260FB1F9D5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ETSDemo.App.UnitTests", "ETSDemo.App.UnitTests\ETSDemo.App.UnitTests.csproj", "{FE437869-433D-4FDF-A860-618FA50EAC81}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ETSDemo.App.IntegrationTests", "ETSDemo.App.IntegrationTests\ETSDemo.App.IntegrationTests.csproj", "{A515B7F2-9C30-4F11-91F4-C672E4E776F5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ETSDemo.Api", "ETSDemo.Api\ETSDemo.Api.csproj", "{4924F988-12FE-4297-AF82-01603EFAA1A8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ETSDemo.App.LoadTest", "ETSDemo.App.LoadTest", "{36D7F45E-ED2E-4F84-9F56-E31281A6A102}"
+	ProjectSection(SolutionItems) = preProject
+		ETSDemo.App.LoadTest\get-test-results.ps1 = ETSDemo.App.LoadTest\get-test-results.ps1
+		ETSDemo.App.LoadTest\script.ps1 = ETSDemo.App.LoadTest\script.ps1
+		ETSDemo.App.LoadTest\trigger-test.ps1 = ETSDemo.App.LoadTest\trigger-test.ps1
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{19FD0A66-E77A-4B3E-9C34-EE260FB1F9D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19FD0A66-E77A-4B3E-9C34-EE260FB1F9D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19FD0A66-E77A-4B3E-9C34-EE260FB1F9D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19FD0A66-E77A-4B3E-9C34-EE260FB1F9D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE437869-433D-4FDF-A860-618FA50EAC81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE437869-433D-4FDF-A860-618FA50EAC81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE437869-433D-4FDF-A860-618FA50EAC81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE437869-433D-4FDF-A860-618FA50EAC81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A515B7F2-9C30-4F11-91F4-C672E4E776F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A515B7F2-9C30-4F11-91F4-C672E4E776F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A515B7F2-9C30-4F11-91F4-C672E4E776F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A515B7F2-9C30-4F11-91F4-C672E4E776F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4924F988-12FE-4297-AF82-01603EFAA1A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4924F988-12FE-4297-AF82-01603EFAA1A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4924F988-12FE-4297-AF82-01603EFAA1A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4924F988-12FE-4297-AF82-01603EFAA1A8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A3F012BE-8AA5-4D62-9FDB-CEABD7C03C71}
+	EndGlobalSection
+EndGlobal
